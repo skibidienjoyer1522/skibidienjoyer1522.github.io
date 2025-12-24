@@ -1,9 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Site</title>
+  <meta charset="UTF-8">
+  <title>My About Me Site</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>In Progress</h1>
+
+  <nav>
+    <div>
+      <a href="#home" data-en="Home" data-fr="Accueil">Home</a>
+      <a href="#about" data-en="About" data-fr="À propos">About</a>
+      <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+    </div>
+    <div>
+      <button class="toggle-btn" onclick="toggleMode()" data-en="Toggle Mode" data-fr="Changer Mode">Toggle Mode</button>
+      <select id="language-select" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </nav>
+
+  <section id="home">
+    <h1 data-en="Welcome" data-fr="Bienvenue">Welcome</h1>
+    <p data-en="This site is still in progress, but feel free to scroll around and check out the sections."
+       data-fr="Ce site est encore en cours, mais vous pouvez naviguer et explorer les sections.">
+       This site is still in progress, but feel free to scroll around and check out the sections.
+    </p>
+  </section>
+
+  <section id="about">
+    <h1 data-en="About Me" data-fr="À propos de moi">About Me</h1>
+    <p data-en="Hey. I’m building this site step by step. Eventually, this will have more details about me"
+       data-fr="Salut. Je construis ce site étape par étape. À terme, il contiendra plus d’informations sur moi.">
+       Building this site step by step. Eventually, this will have more details.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h1 data-en="Contact" data-fr="Contact">Contact</h1>
+    <p data-en="Feel free to check out my GitHub or send me an email:" data-fr="N’hésitez pas à visiter mon GitHub ou m’envoyer un email :">
+      Feel free to check out my GitHub or send me an email:
+    </p>
+
+    <!-- GitHub button -->
+    <a href="https://github.com/skibidienjoyer1522" target="_blank" class="github-link" data-en="GitHub" data-fr="GitHub">
+      <svg height="24" width="24" viewBox="0 0 16 16" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 
+                 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 
+                 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 
+                 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82a7.54 7.54 0 012 0c1.53-1.03 
+                 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
+                 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      GitHub
+    </a>
+
+    <!-- Email button -->
+    <a href="mailto:coolmaster1081231@gmail.com" class="github-link" data-en="Email" data-fr="Email">
+      <svg height="24" width="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 13.065L.75 5.25V18h22.5V5.25L12 13.065zm0-2.13L22.5 4.5H1.5l10.5 6.435z"/>
+      </svg>
+      Email
+    </a>
+  </section>
+
+  <div class="in-progress" data-en="In progress" data-fr="En cours">In progress</div>
+
+  <script>
+    // Automatically enable dark mode if the system prefers it
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    function changeLanguage(lang) {
+      const elements = document.querySelectorAll('[data-en]');
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+    }
+  </script>
+
 </body>
 </html>
